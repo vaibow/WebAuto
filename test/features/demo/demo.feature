@@ -1,6 +1,5 @@
 Feature: Demo feature
 
-    @demo
     Scenario Outline: Running the first automation script
     Given Google page is opened
     Then Search the keyword <SearchKeyword>
