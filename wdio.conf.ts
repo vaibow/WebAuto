@@ -38,7 +38,7 @@ export const config: Options.Testrunner = {
     // will be called from there.
     //
     currentDt: new Date(),
-    specs: [`${process.cwd()}/test/features/**/*.feature`],
+    specs: [`./test/features/**/*.feature`],
     // Patterns to exclude.
     exclude: [
         // 'path/to/excluded/files'
@@ -130,7 +130,7 @@ export const config: Options.Testrunner = {
     // with `/`, the base url gets prepended, not including the path portion of your baseUrl.
     // If your `url` parameter starts without a scheme or `/` (like `some/path`), the base url
     // gets prepended directly.
-    baseUrl: "http://localhost",
+    baseUrl: "https://the-internet.herokuapp.com",
     //
     // Default timeout for all waitFor* commands.
     waitforTimeout: 10000,
@@ -172,8 +172,6 @@ export const config: Options.Testrunner = {
     ['allure',
         {
             outputDir: 'allure-results',
-            disableWebdriverStepsReporting: true,
-            useCucumberStepReporter: true
         }
     ]
 ],
@@ -343,8 +341,8 @@ export const config: Options.Testrunner = {
      */
     afterFeature: function (uri, feature) {
         // Add more env details
-        allure.addEnvironment("Environment: ", browser.options.environment)
-        allure.addEnvironment("Middleware: ", "SIT-EAI")
+        // allure.addEnvironment("Environment: ", browser.options.environment)
+        // allure.addEnvironment("Middleware: ", "SIT-EAI")
          },
     
     /**

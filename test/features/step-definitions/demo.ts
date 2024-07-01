@@ -25,3 +25,21 @@ Then(/^Url should match (.*)$/, async function(ExpectedUrl){
     let url = await browser.getUrl()
     chai.expect(url).to.equal(ExpectedUrl)
 })
+
+Given(/^Web Page is opened$/, async function(){
+    await browser.url(`/inputs`)
+    await browser.setTimeout({implicit : 15000, pageLoad : 10000})
+    await browser.maximizeWindow()
+})
+
+/**
+ * setValue is used when a user wants to clear the field and enter new set of values
+ * addValue is used when a user wants to add to existing placeholder value
+ * addValue is also used to upload file by passing file url as argument
+ * 
+ */
+When(/^user performs web interactions$/, async function(){
+    let ele = await $(`[type=number]`)
+    await ele.setValue(`123546`)
+    await browser.debug()
+})
