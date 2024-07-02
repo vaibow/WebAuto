@@ -1,5 +1,5 @@
 import { Given,When,Then } from "@wdio/cucumber-framework";
-import chai from "chai"
+import {expect} from "chai"
 
 Given(/^Google page is opened$/, async function() {
    await browser.url("https://google.com")
@@ -27,7 +27,8 @@ Then(/^Url should match (.*)$/, async function(ExpectedUrl){
 })
 
 Given(/^Web Page is opened$/, async function(){
-    await browser.url(`/inputs`)
+    // await browser.url(`/inputs`)
+    await browser.url(`/dropdown`)
     await browser.setTimeout({implicit : 15000, pageLoad : 10000})
     await browser.maximizeWindow()
 })
@@ -38,8 +39,40 @@ Given(/^Web Page is opened$/, async function(){
  * addValue is also used to upload file by passing file url as argument
  * 
  */
-When(/^user performs web interactions$/, async function(){
-    let ele = await $(`[type=number]`)
-    await ele.setValue(`123546`)
-    await browser.debug()
+When(/^user performs web interactions$/, async (dataTable)=>{
+    // let ele = await $(`[type=number]`)
+    // await ele.setValue(`123546`)
+    // await browser.debug()
+
+    /**
+     * Working with dropdown
+     */
+
+    let eleArr = await $$(`select > option`)
+    let arr = [];
+    for(let i=0; i<eleArr.length; i++){
+        let ele = eleArr[i]
+        let val = (await ele.getText()).trim()
+        arr.push(val)
+    }
+    console.log(`>>Options Array : ${arr}`);
+    const expectedOptions = await dataTable.raw().map(row => row[0].trim());
+    const actualOptions = arr;
+    // Assert the dropdown values
+    expect(actualOptions).to.deep.equal(expectedOptions);
+})
+
+When(/^user validates the dropdown$/, async (dataTable)=>{
+    let eleArr = await $$(`select > option`)
+    let arr = [];
+    for(let i=0; i<eleArr.length; i++){
+        let ele = eleArr[i]
+        let val = (await ele.getText()).trim()
+        arr.push(val)
+    }
+    console.log(`>>Options Array : ${arr}`);
+    const expectedOptions = await dataTable.raw().map(row => row[0].trim());
+    const actualOptions = arr;
+    // Assert the dropdown values
+    expect(actualOptions).to.deep.equal(expectedOptions);
 })

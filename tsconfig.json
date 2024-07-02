@@ -1,6 +1,6 @@
 {
     "compilerOptions": {
-        "moduleResolution": "node",
+        "moduleResolution": "Node10",
         "module": "ESNext",
         "target": "es2022",
         "lib": [
@@ -8,11 +8,13 @@
             "dom"
         ],
         "types": [
-            "node",
+            "@types/node",
             "@wdio/globals/types",
             "expect-webdriverio",
-            "@wdio/cucumber-framework"
+            "@wdio/cucumber-framework",
+            "@types/chai"
         ],
+        
         "skipLibCheck": true,
         "noEmit": true,
         "allowImportingTsExtensions": true,
@@ -22,7 +24,8 @@
         "strict": false,
         "noUnusedLocals": true,
         "noUnusedParameters": true,
-        "noFallthroughCasesInSwitch": true
+        "noFallthroughCasesInSwitch": true,
+        "typeRoots": ["./node_modules"]
     },
     "include": [
         "test",
