@@ -26,9 +26,14 @@ Then(/^Url should match (.*)$/, async function(ExpectedUrl){
     chai.expect(url).to.equal(ExpectedUrl)
 })
 
-Given(/^Web Page is opened$/, async function(){
+Given(/^Dropdown Web Page is opened$/, async function(){
     // await browser.url(`/inputs`)
     await browser.url(`/dropdown`)
+    await browser.setTimeout({implicit : 15000, pageLoad : 10000})
+    await browser.maximizeWindow()
+})
+Given(/^checkbox Web Page is opened$/, async function(){
+    await browser.url(`/checkboxes`)
     await browser.setTimeout({implicit : 15000, pageLoad : 10000})
     await browser.maximizeWindow()
 })
@@ -75,4 +80,16 @@ When(/^user validates the dropdown$/, async (dataTable)=>{
     const actualOptions = arr;
     // Assert the dropdown values
     expect(actualOptions).to.deep.equal(expectedOptions);
+})
+
+When(/^User selects the checkbox$/, async function(){
+    let ele = await $$(`//form[@id= "checkboxes"]/input`)
+    for(let i=0;i<ele.length;i++){
+        let checkbox = ele[i]
+        if(!await checkbox.isSelected()){
+           checkbox.click()
+           console.log("Checkbox has been selected");
+        }
+    }
+    await browser.debug();
 })
