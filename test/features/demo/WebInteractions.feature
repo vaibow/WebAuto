@@ -9,6 +9,7 @@ Feature: Web interactions
     #When user validates the dropdown
         # |Please select an option|
         # |Option 1|
+<<<<<<< HEAD
         # |Option 2|
 
     @alertsdemo
@@ -21,4 +22,6 @@ Feature: Web interactions
     When User clicks the generate alerts button
         # |Please select an option|
         # |Option 1|
+=======
+>>>>>>> 2d5a8f5be3d5c90b06684c6a22df51e18b0d540e
         # |Option 2|
