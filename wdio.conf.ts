@@ -38,7 +38,18 @@ export const config: Options.Testrunner = {
     // will be called from there.
     //
     currentDt: new Date(),
-    specs: [`./test/features/**/*.feature`],
+    reporters: [
+        'spec',
+        [
+            'allure', 
+            {
+                outputDir: 'allure-results',
+                disableWebdriverStepsReporting: true,
+                disableWebdriverScreenshotsReporting: true,
+                useCucumberStepReporter: true
+            }
+        ]
+   ],
     // Patterns to exclude.
     exclude: [
         // 'path/to/excluded/files'
@@ -195,7 +206,7 @@ export const config: Options.Testrunner = {
         // <boolean> fail if there are any undefined or pending steps
         strict: false,
         // <string> (expression) only execute the features or scenarios with tags matching the expression
-        tagExpression: "@demo",
+        tagExpression: "@alertsdemo",
         // <number> timeout for step definitions
         timeout: 300000,
         // <boolean> Enable this config to treat undefined definitions as warnings.
