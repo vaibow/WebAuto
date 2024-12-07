@@ -37,15 +37,12 @@ Given(/^checkbox Web Page is opened$/, async function(){
     await browser.setTimeout({implicit : 15000, pageLoad : 10000})
     await browser.maximizeWindow()
 })
-<<<<<<< HEAD
 
 Given(/^Alerts Web Page is opened$/, async function(){
     await browser.url(`/javascript_alerts`)
     await browser.setTimeout({implicit : 15000, pageLoad : 10000})
     await browser.maximizeWindow()
 })
-=======
->>>>>>> 2d5a8f5be3d5c90b06684c6a22df51e18b0d540e
 
 /**
  * setValue is used when a user wants to clear the field and enter new set of values
@@ -101,7 +98,6 @@ When(/^User selects the checkbox$/, async function(){
         }
     }
     await browser.debug();
-<<<<<<< HEAD
 })
 
 When(/^User clicks the generate alerts button$/, async function(){
@@ -114,6 +110,4 @@ When(/^User clicks the generate alerts button$/, async function(){
         }
     }
     await browser.debug();
-=======
->>>>>>> 2d5a8f5be3d5c90b06684c6a22df51e18b0d540e
 })
